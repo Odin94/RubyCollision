@@ -51,9 +51,12 @@ class MovingWall < Wall
     end
 
     def touching?(actor)
-        rectv_rectv_collide?(actor.x + actor.get_total_vel_x, actor.y + actor.get_total_vel_y, actor.w, actor.h, @x + @vel_x, @y, @w, @h) or
-        rectv_rectv_collide?(actor.x + actor.get_total_vel_x, actor.y + actor.get_total_vel_y, actor.w, actor.h, @x - @vel_x, @y, @w, @h) or
-        rectv_rectv_collide?(actor.x + actor.get_total_vel_x, actor.y + actor.get_total_vel_y, actor.w, actor.h, @x, @y + @vel_y, @w, @h) or
-        rectv_rectv_collide?(actor.x + actor.get_total_vel_x, actor.y + actor.get_total_vel_y, actor.w, actor.h, @x, @y - @vel_y, @w, @h)
+        actor_vel_x = actor.get_total_vel_x
+        actor_vel_y = actor.get_total_vel_y
+
+        rectv_rectv_collide?(actor.x + actor_vel_x, actor.y + actor_vel_y, actor.w, actor.h, @x + @vel_x, @y, @w, @h) or
+        rectv_rectv_collide?(actor.x + actor_vel_x, actor.y + actor_vel_y, actor.w, actor.h, @x - @vel_x, @y, @w, @h) or
+        rectv_rectv_collide?(actor.x + actor_vel_x, actor.y + actor_vel_y, actor.w, actor.h, @x, @y + @vel_y, @w, @h) or
+        rectv_rectv_collide?(actor.x + actor_vel_x, actor.y + actor_vel_y, actor.w, actor.h, @x, @y - @vel_y, @w, @h)
     end
 end

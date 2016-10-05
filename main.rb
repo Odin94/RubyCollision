@@ -18,6 +18,12 @@ class GameWindow < Gosu::Window
         @player = Player.new
         @player.warp(400, 240)
 
+        # without this line the player can move into rectangles until they walk against a wall for the first time. I don't get it. At all.
+        # Like seriously, is this some weird floating point arithmetic thing or something?
+        # this doesn't work if vel_x = 0 or = 1
+        # alternatively, setting player.warp to 400.1 instead of 400 also works. 400.0 doesn't though.
+        @player.vel_x = 0.1
+
         @walls = [Wall.new(300, 200), Wall.new(250, 150), MovingWall.new(100, 400),
             MovingWall.new(100, 100, vel_x: 0, vel_y: 1), MovingWall.new(500, 100, vel_x: 0, vel_y: -1),
             MovingWall.new(100, 100, vel_x: 6, vel_y: 0),

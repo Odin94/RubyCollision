@@ -9,7 +9,7 @@ class Player < Rectangle
         @vel_x = @vel_y = @ext_vel_x = @ext_vel_y = 0.0
     end
 
-    attr_accessor :ext_vel_x, :ext_vel_y
+    attr_accessor :ext_vel_x, :ext_vel_y, :vel_x, :vel_y
 
     def get_total_vel_x
         return @vel_x + @ext_vel_x
